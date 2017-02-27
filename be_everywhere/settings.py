@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	'apps.be_everywhere_app'
+	'apps.be_everywhere_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
