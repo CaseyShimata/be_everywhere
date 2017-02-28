@@ -25,11 +25,11 @@ class UserManager(models.Manager):
         elif postData['password'] != postData['confpass']:
             errors.append("Password does not match password confirmation.")
         if errors:
-            return errors
+            return {'errors':errors}
         else:
             hashpass = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
-            Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass)
-            return Users.objects.get(email=postData['email'])
+            user = Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass)
+            return user
     def loginvalidation(self, postData):
         errors = []
         loginuser = Users.objects.filter(email=postData['email'])
@@ -37,7 +37,7 @@ class UserManager(models.Manager):
             passtest = loginuser[0].password.encode()
         if not loginuser or bcrypt.hashpw(postData['password'].encode(), passtest) != passtest:
             errors.append("Invalid login")
-        return errors
+        return {'errors':errors}
 
 class Users(models.Model):
     first = models.CharField(max_length = 100)
