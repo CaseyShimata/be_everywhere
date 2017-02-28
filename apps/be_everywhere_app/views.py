@@ -6,3 +6,6 @@ def homepage(request):
 
 def log_reg(request):
     return render(request, 'be_everywhere_app/log_reg.html')
+
+def about(request):
+    return render(request, 'be_everywhere_app/about.html')
