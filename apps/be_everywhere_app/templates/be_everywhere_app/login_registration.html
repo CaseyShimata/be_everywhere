@@ -9,7 +9,7 @@
 			{% comment %} if already logged in redirect to admin welcome page if user permission is admin if user permission is operator ... {% endcomment %}
 			<a href="/">Home</a>
 			<h1>Login or Register</h1> <p>Let's go see what's out there</p>
-			<form action="/log_reg" method="post">{% csrf_token %}
+			<form action="/register" method="post">{% csrf_token %}
 				{{regform.as_p}}
 				<input type="submit" value="Register">
 			</form>

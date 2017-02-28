@@ -9,7 +9,12 @@ def homepage(request):
 def log_reg(request):
     form = RegisterForm()
     context = {'regform':form}
-    return render(request, 'be_everywhere_app/log_reg.html', context)
+    return render(request, 'be_everywhere_app/login_registration.html', context)
 
 def about(request):
     return render(request, 'be_everywhere_app/about.html')
+
+def register(request):
+    if request.method == "POST":
+        print request.POST
+        return redirect('/')
