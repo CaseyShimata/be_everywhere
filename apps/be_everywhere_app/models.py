@@ -24,7 +24,7 @@ class UserManager(models.Manager):
             errors.append("Password must be at least 8 characters.")
         elif postData['password'] != postData['confpass']:
             errors.append("Password does not match password confirmation.")
-        return errors
+        return {'errors':errors}
     def loginvalidation(self, postData):
         errors = []
         loginuser = Users.objects.filter(email=postData['email'])
