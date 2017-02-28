@@ -8,11 +8,16 @@
 		<div class="wrapper">
 			{% comment %} if already logged in redirect to admin welcome page if user permission is admin if user permission is operator ... {% endcomment %}
 			<a href="/">Home</a>
-			<h1>Login or Register</h1> <p>Let's go see what's out there</p>
+			<h1>Register</h1> <p>Let's go see what's out there</p>
 			<form action="/register" method="post">{% csrf_token %}
 				{{regform.as_p}}
-				<input type="submit" value="Register">
+				<button type="submit" name="button">Register</button>
 			</form>
+      <h1>Login</h1>
+      <form action="/login" method="post">
+        {{logform.as_p}}
+        <button type="submit" name="button">Login</button>
+      </form>
 		</div>
   </body>
 </html>
