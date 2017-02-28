@@ -13,3 +13,8 @@ def log_reg(request):
 
 def about(request):
     return render(request, 'be_everywhere_app/about.html')
+
+def register(request):
+    if request.method == "POST":
+        print request.POST
+        return redirect('/')
