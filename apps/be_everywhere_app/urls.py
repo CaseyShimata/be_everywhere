@@ -6,6 +6,7 @@ urlpatterns = [
 	url(r'^log_reg$', views.log_reg),
 	url(r'^about$', views.about),
 	url(r'^register$', views.register),
+	url(r'^login$', views.login),
 	# url(r'^admin_manage_users$', views.admin_manage_users),
 	# url(r'^user_manage_events$', views.user_manage_events),
 	# url(r'^admin_manage_products$', views.admin_manage_products),
