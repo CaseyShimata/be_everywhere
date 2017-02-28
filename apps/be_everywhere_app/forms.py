@@ -7,3 +7,9 @@ class RegisterForm(forms.ModelForm):
         model = Users
         fields = ['first', 'last', 'email', 'password'] + ['confirm_password']
         widgets = {'password':forms.PasswordInput(),}
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = Users
+        fields = ['email', 'password']
+        widgets = {'password':forms.PasswordInput(),}
