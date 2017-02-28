@@ -6,6 +6,11 @@
 	</head>
 	<body>
 		<div class="wrapper">
+	{% if messages %}
+    {% for message in messages %}
+      <p>{{message}}</p>
+    {% endfor %}
+  {% endif %}
 			<a href="http://localhost:8000/log_out">Logout</a>
 			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
 			<h1>My Messages</h1>
@@ -27,8 +32,8 @@
 			<h3>Inbox</h3>
 			<table>
 				<tr>
-					<td>Username</td>
-					<td>message</td>
+					<td>Name</td>
+					<td>Message</td>
 					<td>        </td>
 				</tr>
 			</table>
@@ -37,7 +42,7 @@
 			{% if messages %}
 			{% for message in messages %}
 					<tr>
-						<td>user.username</td>
+						<td>user.first</td>
 						<td>user.message</td>
 						<td><a href="/">View User</a></td>
 					</tr>

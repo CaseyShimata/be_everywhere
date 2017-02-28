@@ -6,6 +6,11 @@
 	</head>
 	<body>
 		<div class="wrapper">
+	{% if messages %}
+    {% for message in messages %}
+      <p>{{message}}</p>
+    {% endfor %}
+  {% endif %}
 			<a href="http://localhost:8000/log_out">Logout</a>
 			<h1>Become an Operator</h1>
 			<table>
@@ -17,7 +22,7 @@
 				</tr>
 			</table>
 
-			<form action="/operator_request" method="post">
+			<form action="/operator_request" method="post"> {% csrf_token %}
 				<input type="radio" name="turn_on_location" value="Turnon My Location">
 				<h3>Upon approval: </h3>
 				<p> - You will be able to create events</p>
