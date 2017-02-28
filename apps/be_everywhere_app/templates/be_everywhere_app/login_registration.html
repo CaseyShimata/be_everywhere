@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Login_registration</title>
+<<<<<<< HEAD
 		{% load static %}
 		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/homepage.css' %}" />
+=======
+    <style media="screen">
+      .error{
+        color:red;
+      }
+    </style>
+>>>>>>> f8c52aeadc9551e69ec963b3312b4bca12eb0582
   </head>
   <body>
 		<div class="wrapper">
@@ -15,16 +23,16 @@
 				{{regform.as_p}}
 				<button type="submit" name="button">Register</button>
 			</form>
-      {% if messages %}
-        {% for message in messages %}
-          <p>{{message}}</p>
-        {% endfor %}
-      {% endif %}
       <h1>Login</h1>
       <form action="/login" method="post">
         {{logform.as_p}}
         <button type="submit" name="button">Login</button>
       </form>
+      {% if messages %}
+        {% for message in messages %}
+          <p class="{{message.tags}}">{{message}}</p>
+        {% endfor %}
+      {% endif %}
 		</div>
   </body>
 </html>
