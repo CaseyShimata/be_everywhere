@@ -33,6 +33,17 @@ class UserManager(models.Manager):
         if not loginuser or bcrypt.hashpw(postData['password'].encode(), passtest) != passtest:
             errors.append("Invalid login")
         return errors
+    def createaccount(self, postData):
+        hashpass = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+        Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass)
+        loggeduser = Users.objects.get(email=postData['email'])
+        request.session['logged'] = {
+            'email': loggeduser.email,
+            'id': loggeduser.id,
+            'first': loggeduser.first,
+            'last': loggeduser.last
+        }
+
 
 
 class Users(models.Model):
