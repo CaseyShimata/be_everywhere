@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<a href="http://localhost:8000/log_out">Logout</a>
+			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
+			<h1>Manage Your Events</h1>
+			<table>
+				<tr>
+					<td><a href="/messages">My Mesages</a></td>
+					<td><a href="/become_an_operator">Become an Operator</a></td>
+					<td><a href="/welcome_attendee">My Page</a></td>
+					<td><a href="/attendee_manage_account">Manage Account</a></td>
+				</tr>
+			</table>
+			<h3>My Events</h3>
+			<table>
+				<tr>
+					<td>Image</td>
+					<td>Name</td>
+					<td>Location</td>
+					<td>Genre</td>
+					<td>Start Date</td>
+					<td>End Date</td>
+					<td>Description</td>
+					<td>Rate per Minute</td>
+					<td>         </td>
+					<td>         </td>
+				</tr>
+			</table>
+			<fieldset>
+				<table>
+		{% if events %}
+			{% for event in events %}
+					<tr>
+						<td>event.image</td>
+						<td>event.name</td>
+						<td>event.location</td>
+						<td>event.genre</td>
+						<td>event.start_date</td>
+						<td>event.end_date</td>
+						<td>event.description</td>
+						{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
+						<td>event.rate</td>
+						<td><a href="/">View</a></td>
+						{% comment %} see who is attending the event and who created the event {% endcomment %}
+						<td><a href="/">Leave</a></td>
+					</tr>
+			{% endfor %}
+		{% endif %}
+				</table>
+			</fieldset>
+			<h3>All Events</h3>
+			<table>
+				<tr>
+					<td>Image</td>
+					<td>Name</td>
+					<td>Location</td>
+					<td>Genre</td>
+					<td>Start Date</td>
+					<td>End Date</td>
+					<td>Description</td>
+					<td>Rate per Minute</td>
+					<td>         </td>
+					<td>         </td>
+				</tr>
+			</table>
+			<fieldset>
+				<table>
+		{% if events %}
+			{% for event in events %}
+					<tr>
+						<td>event.image</td>
+						<td>event.name</td>
+						<td>event.location</td>
+						<td>event.genre</td>
+						<td>event.start_date</td>
+						<td>event.end_date</td>
+						<td>event.description</td>
+						{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
+						<td>event.rate</td>
+						<td><a href="/">View</a></td>
+						{% comment %} see who is attending the event and who created the event {% endcomment %}
+						<td><a href="/join">Join</a></td>
+					</tr>
+			{% endfor %}
+		{% endif %}
+				</table>
+			</fieldset>
+		</div>
+	</body>
+</html>
