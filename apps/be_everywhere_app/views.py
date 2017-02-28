@@ -33,3 +33,44 @@ def register(request):
                'permission': user['theuser'].permission
            }
     return redirect('/')
+
+def admin_manage_users(request):
+    if ['logged'].permission = 2 #assuming basic users are 1, admin are 3 and vendors 1?
+        context = {
+            ['logged'].id: id,
+            'users': Users.objects.all()
+        }
+        return render(request, "be_everywhere_app/admin_manage_users", context)
+    else
+        redirect('be_everywhere_app/homepage.html')
+
+def user_manage_events(request):
+    context = {
+        ['logged'].id: id,
+        'my_events': Events.objects.filter(event_order.user=id)
+    }
+        return render(request, "be_everywhere_app/admin_manage_events", context)
+
+def admin_manage_products(request):
+    return render(request, 'be_everywhere_app/admin_manage_products.html')
+
+def admin_product_sales(request):
+    return render(request, 'be_everywhere_app/admin_product_sales.html')
+
+def attendees_become_an_operator(request):
+    return render(request, 'be_everywhere_app/attendees_become_an_operator.html')
+
+def my_messages(request):
+    return render(request, 'be_everywhere_app/my_messages.html')
+
+def view_event(request):
+    return render(request, 'be_everywhere_app/view_event.html')
+
+def view_user(request):
+    return render(request, 'be_everywhere_app/view_user.html')
+
+def welcome_admin(request):
+    return render(request, 'be_everywhere_app/welcome_admin.html')
+
+def welcome_attendee(request):
+    return render(request, 'be_everywhere_app/welcome_attendee.html')
