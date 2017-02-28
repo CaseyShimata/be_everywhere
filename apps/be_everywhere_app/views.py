@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from .forms import RegisterForm, LoginForm
 from models import Users
@@ -21,7 +22,14 @@ def register(request):
         user = Users.objects.regvalidation(request.POST)
         if 'errors' in user:
             for error in user['errors']:
-                print error
+                messages.error(request, error)
+                return redirect('/register')
         else:
-            print user.first
-        return redirect('/')
+            request.session['logged'] = {
+               'email': user['theuser'].email,
+               'id': user['theuser'].id,
+               'first': user['theuser'].first,
+               'last': user['theuser'].last,
+               'permission': user['theuser'].permission
+           }
+    return redirect('/')
