@@ -24,7 +24,12 @@ class UserManager(models.Manager):
             errors.append("Password must be at least 8 characters.")
         elif postData['password'] != postData['confpass']:
             errors.append("Password does not match password confirmation.")
-        return {'errors':errors}
+        if errors:
+            return errors
+        else:
+            hashpass = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+            Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass)
+            return Users.objects.get(email=postData['email'])
     def loginvalidation(self, postData):
         errors = []
         loginuser = Users.objects.filter(email=postData['email'])
@@ -33,18 +38,6 @@ class UserManager(models.Manager):
         if not loginuser or bcrypt.hashpw(postData['password'].encode(), passtest) != passtest:
             errors.append("Invalid login")
         return errors
-    def createaccount(self, postData):
-        hashpass = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
-        Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass)
-        loggeduser = Users.objects.get(email=postData['email'])
-        request.session['logged'] = {
-            'email': loggeduser.email,
-            'id': loggeduser.id,
-            'first': loggeduser.first,
-            'last': loggeduser.last
-        }
-
-
 
 class Users(models.Model):
     first = models.CharField(max_length = 100)
