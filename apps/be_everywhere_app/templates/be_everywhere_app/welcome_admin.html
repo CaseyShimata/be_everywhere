@@ -8,8 +8,7 @@
 		<div class="wrapper">
 			<a href="http://localhost:8000/log_out">Logout</a>
 			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
-			<h1>Welcome Admin {{request.session.username}}!</h1>
-			{% comment %} add username to table Users ^ {% endcomment %}
+			<h1>Welcome Admin {{request.session.name}}!</h1>
 			{% load staticfiles %}
 			<img src="{% static 'be_everywhere_app/images/#.jpg' %}" alt="your profile picture">
 			<table>
