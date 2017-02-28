@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from .forms import RegisterForm, LoginForm
+from models import Users
 
 # Create your views here.
 def homepage(request):
@@ -19,5 +20,8 @@ def register(request):
     if request.method == "POST":
         user = Users.objects.regvalidation(request.POST)
         if 'errors' in user:
-            messsges.error
+            for error in user['errors']:
+                print error
+        else:
+            print user.first
         return redirect('/')
