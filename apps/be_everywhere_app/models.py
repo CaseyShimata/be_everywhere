@@ -28,8 +28,8 @@ class UserManager(models.Manager):
             return {'errors':errors}
         else:
             hashpass = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
-            user = Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass)
-            return user
+            user = Users.objects.create(first=postData['first'], last=postData['last'], email=postData['email'], password=hashpass, permission=3, admin_request=False)
+            return {'theuser':user}
     def loginvalidation(self, postData):
         errors = []
         loginuser = Users.objects.filter(email=postData['email'])

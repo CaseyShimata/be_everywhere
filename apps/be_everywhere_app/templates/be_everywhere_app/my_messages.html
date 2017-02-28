@@ -6,6 +6,11 @@
 	</head>
 	<body>
 		<div class="wrapper">
+	{% if messages %}
+    {% for message in messages %}
+      <p>{{message}}</p>
+    {% endfor %}
+  {% endif %}
 			<a href="http://localhost:8000/log_out">Logout</a>
 			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
 			<h1>My Messages</h1>

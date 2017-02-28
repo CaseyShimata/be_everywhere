@@ -13,6 +13,11 @@
 				{{regform.as_p}}
 				<button type="submit" name="button">Register</button>
 			</form>
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
       <h1>Login</h1>
       <form action="/login" method="post">
         {{logform.as_p}}
