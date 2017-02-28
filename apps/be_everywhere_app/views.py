@@ -17,5 +17,7 @@ def about(request):
 
 def register(request):
     if request.method == "POST":
-        print request.POST
+        user = Users.objects.regvalidation(request.POST)
+        if 'errors' in user:
+            messsges.error
         return redirect('/')
