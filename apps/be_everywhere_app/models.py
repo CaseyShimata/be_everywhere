@@ -44,6 +44,7 @@ class Users(models.Model):
     admin_request = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = UserManager()
 
 class Events(models.Model):
     name = models.CharField(max_length=100)
