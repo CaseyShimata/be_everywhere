@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>welcome_admin</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/welcome_admin.css' %}" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -21,6 +23,9 @@
 					<td><a href="/admin_manage_users">Manage Users</a></td>
 				</tr>
 			</table>
+
+
+
 		</div>
 	</body>
 </html>

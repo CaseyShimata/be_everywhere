@@ -22,7 +22,7 @@ class UserManager(models.Manager):
             errors.append("Email already taken.")
         if len(postData['password']) < 8:
             errors.append("Password must be at least 8 characters.")
-        elif postData['password'] != postData['confirm_password']:
+        if postData['password'] != postData['confirm_password']:
             errors.append("Password does not match password confirmation.")
         if errors:
             return {'errors':errors}
@@ -32,12 +32,21 @@ class UserManager(models.Manager):
             return {'theuser':user}
     def loginvalidation(self, postData):
         errors = []
-        loginuser = Users.objects.filter(email=postData['email'])
-        if loginuser:
-            passtest = loginuser[0].password.encode()
-        if not loginuser or bcrypt.hashpw(postData['password'].encode(), passtest) != passtest:
-            errors.append("Invalid login")
-        return {'errors':errors}
+        password = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+
+        try:
+            user = Users.objects.get(email=postData['email'])
+        except:
+            errors.append("Invalid user!")
+            return {'errors':errors}
+
+        if not bcrypt.hashpw(postData['password'].encode(), user.password.encode()) == user.password.encode():
+            errors.append("Wrong Password!")
+
+        if errors:
+            return {'errors':errors}
+        else:
+            return {'theuser':user}
 
 class Users(models.Model):
     first = models.CharField(max_length = 100)
