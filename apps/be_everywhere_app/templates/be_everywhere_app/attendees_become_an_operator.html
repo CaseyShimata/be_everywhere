@@ -32,7 +32,7 @@
 				<input type="submit" name="submit" value="Get Approved">
 			</form>
 			<p>Already an Operator?</p>
-			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
+			<form action="/change_tier" method="post"><select><option value="Operator">Operator</option><option value="Attendee">Attendee</option></select><input type="submit" value="Change Tiers"></form>
 		</div>
 	</body>
 </html>

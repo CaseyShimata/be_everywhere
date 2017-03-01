@@ -14,7 +14,7 @@
     {% endfor %}
   {% endif %}
 			<a href="http://localhost:8000/log_out">Logout</a>
-			<form action="/change_tier" method="post"><select name="Admin">Admin</select><select name="Operator">Operator</select><select name="Attendee">Attendee</select><input type="submit" value="Change Tier"></form>
+			<form action="/change_tier" method="post"><select><option value="Admin">Admin</option><option value="Operator">Operator</option><option value="Attendee">Attendee</option></select><input type="submit" value="Change Tiers"></form>
 			<h1>My Messages</h1>
 		{% if request.session.permission == 'Admin' %}
 			<table>
@@ -32,9 +32,9 @@
 			<table>
 				<tr>
 					<td><a href="/welcome_attendee">My page</a></td>
-					<td><a href="/become_an_operator">Become an Operator</a></td>
-					<td><a href="/attendee_manage_events">Manage Events</a></td>
-					<td><a href="/attendee_manage_account">Manage Account</a></td>
+					<td><a href="/attendees_become_an_operator">Become an Operator</a></td>
+					<td><a href="/attendees_manage_events">Manage Events</a></td>
+					<td><a href="/attendees_manage_my_account">Manage Account</a></td>
 				</tr>
 			</table>
 		{% endif %}
@@ -47,7 +47,7 @@
 			<table>
 				<tr>
 					<td>Name</td>
-					<td>Message</td>
+					<td id ='message_table_data'>Message</td>
 					<td>        </td>
 				</tr>
 			</table>

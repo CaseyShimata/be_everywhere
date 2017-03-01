@@ -9,17 +9,21 @@
 	<body>
 		<div class="wrapper">
 			<a href="http://localhost:8000/log_out">Logout</a>
-			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
+			<form action="/change_tier" method="post"><select><option value="Admin">Admin</option><option value="Operator">Operator</option><option value="Attendee">Attendee</option></select><input type="submit" value="Change Tiers"></form>
 			<h1>Manage My Account</h1>
 			<table>
 				<tr>
 					<td><a href="/my_messages">My Mesages</a></td>
 					<td><a href="/attendees_manage_events">Manage Events</a></td>
 					<td><a href="/welcome_attendee">My Page</a></td>
-					<td><a href="/attendees_become_an_operator">Manage Account</a></td>
+					<td><a href="/attendees_become_an_operator">Becime an Operator</a></td>
 				</tr>
 			</table>
-
+			<h3>Edit My Information</h3>
+			<form action="/attendee_manage_my_account_form" method="post">{% csrf_token %}
+				{{attendee_manage_my_account_form.as_p}}
+				<input type="submit" name="button">Edit</input>
+			</form>
 		</div>
 	</body>
 </html>

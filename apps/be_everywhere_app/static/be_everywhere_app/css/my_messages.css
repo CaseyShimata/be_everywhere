@@ -35,13 +35,16 @@ a{
 	font-size: 20px;
 }
 table{
-
+min-width: 580px;
 }
 tr{
 
 }
 td{
 
+}
+#message_table_data_header{
+	min-width: 520px;
 }
 form{
 

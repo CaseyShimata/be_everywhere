@@ -6,9 +6,14 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			
-
-
+			<a href="http://localhost:8000/log_out">Logout</a>
+			<form action="/change_tier" method="post"><select><option value="Admin">Admin</option><option value="Operator">Operator</option><option value="Attendee">Attendee</option></select><input type="submit" value="Change Tiers"></form>
+			<h1>Edit Event</h1>
+				<table>
+					<tr>
+						<td><a href="/admin_manage_events">Back to Manage Events</a></td>
+					</tr>
+				</table>
 		</div>
 	</body>
 </html>

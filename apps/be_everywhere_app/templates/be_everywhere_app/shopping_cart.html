@@ -15,6 +15,13 @@
 				</tr>
 			</table>
 		{% endif %}
+		{% if request.session.permission == 'Operator' %}
+			<table>
+				<tr>
+					<td><a href="/operator_manage_products">Back to Manage Products</a></td>
+				</tr>
+			</table>
+		{% endif %}
 			<h1>Shopping Cart</h1>
 			<h3>My Cart</h3>
 			<table>
