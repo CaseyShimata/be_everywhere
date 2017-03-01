@@ -17,6 +17,8 @@ urlpatterns = [
 	url(r'^welcome_admin$', views.welcome_admin),
 	url(r'^welcome_attendee$', views.welcome_attendee),
 	url(r'^login$', views.login),
+<<<<<<< HEAD
+=======
 	# url(r'^admin_manage_users$', views.admin_manage_users),
 	# url(r'^user_manage_events$', views.user_manage_events),
 	# url(r'^admin_manage_products$', views.admin_manage_products),
@@ -27,4 +29,5 @@ urlpatterns = [
 	# url(r'^view_user$', views.view_user),
 	url(r'^welcome_admin$', views.welcome_admin),
 	# url(r'^welcome_attendee$', views.welcome_attendee),
+>>>>>>> fb07ed5b2d512a45b6ee38f9c2e6407cdf4e0f47
 ]
