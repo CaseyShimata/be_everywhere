@@ -7,48 +7,50 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/homepage.css' %}" />
   </head>
   <body>
-		<h1>BE EVERYWHERE</h1> <img src="" alt="an image of the be everywhere logo">
-    <a href="/log_reg">Login/Register</a>
-		<h3>About Be Everywhere</h3>
-		<fieldset>
-			Be Everywhere is a multitasking app that gives you a virtual reality presence anywhere in the world at anytime.
-			<a href="/about">More About Us</a>
-		</fieldset>
-		<h3>Upcoming Events</h3>
-		<table>
-			<tr>
-				<td>Image</td>
-				<td>Name</td>
-				<td>Location</td>
-				<td>Genre</td>
-				<td>Start Date</td>
-				<td>End Date</td>
-				<td>Description</td>
-				<td>         </td>
-			</tr>
-		</table>
-		<fieldset>
+		<div class="wrapper">
+			<h1>BE EVERYWHERE</h1> <img src="" alt="an image of the be everywhere logo">
+	    <a href="/log_reg">Login/Register</a>
+			<h3>About Be Everywhere</h3>
+			<fieldset>
+				Be Everywhere is a multitasking app that gives you a virtual reality presence anywhere in the world at anytime.
+				<a href="/about">More About Us</a>
+			</fieldset>
+			<h3>Upcoming Events</h3>
 			<table>
-	{% if events %}
-		{% for event in events %}
 				<tr>
-					<td>event.image</td>
-					<td>event.name</td>
-					<td>event.location</td>
-					<td>event.genre</td>
-					{% comment %} ^^ please add genre to the table events {% endcomment %}
-					<td>event.start_date</td>
-					<td>event.end_date</td>
-					<td>event.description</td>
-					{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
-					<td><a href="">Attend</a></td>
-					{% comment %} ^^ links to the login/register page with a message
-					'So, ya wanna attend the event do ya? Why don't you fill our your info and click that nice signup button right there?'
-					 {% endcomment %}
+					<td>Image</td>
+					<td>Name</td>
+					<td>Location</td>
+					<td>Genre</td>
+					<td>Start Date</td>
+					<td>End Date</td>
+					<td>Description</td>
+					<td>         </td>
 				</tr>
-		{% endfor %}
-	{% endif %}
 			</table>
-		</fieldset>
+			<fieldset>
+				<table>
+		{% if events %}
+			{% for event in events %}
+					<tr>
+						<td>event.image</td>
+						<td>event.name</td>
+						<td>event.location</td>
+						<td>event.genre</td>
+						{% comment %} ^^ please add genre to the table events {% endcomment %}
+						<td>event.start_date</td>
+						<td>event.end_date</td>
+						<td>event.description</td>
+						{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
+						<td><a href="">Attend</a></td>
+						{% comment %} ^^ links to the login/register page with a message
+						'So, ya wanna attend the event do ya? Why don't you fill our your info and click that nice signup button right there?'
+						 {% endcomment %}
+					</tr>
+			{% endfor %}
+		{% endif %}
+				</table>
+			</fieldset>
+		</div>
 	</body>
 </html>
