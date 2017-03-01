@@ -42,6 +42,18 @@ def login(request):
             for error in user['errors']:
                 messages.error(request, error)
             return redirect('/log_reg')
+        else:
+            request.session['logged'] = {
+               'email': user['theuser'].email,
+               'id': user['theuser'].id,
+               'first': user['theuser'].first,
+               'last': user['theuser'].last,
+               'permission': user['theuser'].permission
+           }
+        if request.session['logged']['permission'] == 1:
+            return redirect('/welcome_admin')
+        else:
+            return redirect('/')
 #alex code
 def admin_manage_users(request):
     if ['logged'].permission == 3: #assuming basic users are 1, admin are 3 and vendors 1?
@@ -59,6 +71,9 @@ def admin_manage_users(request):
 #         'my_events': Events.objects.filter(event_order.user=id)
 #     }
     return render(request, "be_everywhere_app/admin_manage_events", context)
+
+def user_manage_events(request):
+	return render(request, 'be_everywhere_app/admin_manage_users')
 
 def admin_manage_products(request):
     return render(request, 'be_everywhere_app/admin_manage_products.html')
