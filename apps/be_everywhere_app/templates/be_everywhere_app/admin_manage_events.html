@@ -21,6 +21,19 @@
 					<td><a href="/admin_manage_users">Manage Products</a></td>
 				</tr>
 			</table>
+			<form action="/create_event" method="post">
+				{% csrf_token %}
+				{{eventform.as_p}}
+				<p> Genre: <select name="genre">
+					{% for genre in genre.name %}
+						{{genre}}
+					{% endfor %}
+				</select>
+				<input type="text" name="genreb" value=""></p>
+				<p><input type="datetime-local" name="start_date" value="" required></p>
+				<p><input type="datetime-local" name="end_date" value="" required></p>
+				<button type="submit" name="button">Submit</button>
+			</form>
 			<h3>Events</h3>
 			<table>
 				<tr>
