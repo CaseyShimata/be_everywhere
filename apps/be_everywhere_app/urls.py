@@ -25,6 +25,6 @@ urlpatterns = [
 	# url(r'^my_messages$', views.my_messages),
 	# url(r'^view_event$', views.view_event),
 	# url(r'^view_user$', views.view_user),
-	# url(r'^welcome_admin$', views.welcome_admin),
+	url(r'^welcome_admin$', views.welcome_admin),
 	# url(r'^welcome_attendee$', views.welcome_attendee),
 ]

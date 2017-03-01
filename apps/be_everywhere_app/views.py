@@ -50,7 +50,10 @@ def login(request):
                'last': user['theuser'].last,
                'permission': user['theuser'].permission
            }
-        return redirect('/')
+        if request.session['logged']['permission'] == 1:
+            return redirect('/welcome_admin')
+        else:
+            return redirect('/')
 #alex code
 def admin_manage_users(request):
     if ['logged'].permission == 3: #assuming basic users are 1, admin are 3 and vendors 1?
