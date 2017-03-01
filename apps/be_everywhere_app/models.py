@@ -48,6 +48,28 @@ class UserManager(models.Manager):
         else:
             return {'theuser':user}
 
+class EventsManager(models.Model):
+    def new(self, postData, id):
+        errors = []
+        if len(postData['name']) < 2:
+            errors.append("Name must be at least 2 character.")
+        if len(postData['location']) < 2:
+            errors.append("Location must be at least 2 character.")
+        if len(postData['genre']) < 1:
+            errors.append("Please enter a genre.")
+        if len(postData['start_date']) < 1:
+            errors.append("Enter a start date")
+        elif datetime.strptime((postData['start_date']), '%Y-%m-%d') < datetime.now():
+            errors.append("Start date must be in the future!")
+        if len(postData['end_date']) < 1:
+            errors.append("Enter an end date")
+        elif datetime.strptime((postData['end_date']), '%Y-%m-%d') < datetime.strptime((postData['start_date']), '%Y-%m-%d'):
+            errors.append("End date must be after the start date!")
+        if errors:
+            return {'errors':errors}
+        else:
+            Events.objects.create(name=postData['name'], location=postData['location'], description=postData['description'], rate=postData['rate'], start_date=datetime.strptime((postData['start_date']), '%Y-%m-%d'), end_date=datetime.strptime((postData['end_date']), '%Y-%m-%d'), event_creator=id, status=True, image='dummy.png' )
+
 class Users(models.Model):
     first = models.CharField(max_length = 100)
     last = models.CharField(max_length = 100)
@@ -67,10 +89,11 @@ class Events(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     event_creator = models.ForeignKey(Users, related_name="user_creator")
-    # event_attendee = models.ManyToManyField
+    status = models.BooleanField()
     image = models.FileField(upload_to = "uploads/events")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = EventsManager()
 
 class Genres(models.Model):
     genre = models.CharField(max_length = 100)

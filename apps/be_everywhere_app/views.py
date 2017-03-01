@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from .forms import RegisterForm, LoginForm
-from models import Users
+from .forms import RegisterForm, LoginForm, EventForm
+from models import Users, Genres
 
 # Create your views here.
 def homepage(request):
@@ -75,6 +75,12 @@ def admin_manage_users(request):
 def user_manage_events(request):
 	return render(request, 'be_everywhere_app/admin_manage_users')
 
+def admin_manage_events(request):
+    eventform = EventForm()
+    context = {'eventform':eventform,
+    'genre':Genres.objects.all()}
+    return render(request, 'be_everywhere_app/admin_manage_events.html', context)
+
 def admin_manage_products(request):
     return render(request, 'be_everywhere_app/admin_manage_products.html')
 
@@ -117,7 +123,14 @@ def welcome_admin(request):
         return redirect ('/homepage')
 
 def welcome_attendee(request):
+<<<<<<< HEAD
+    return render(request, 'be_everywhere_app/welcome_attendee.html')
+
+# def create_event(request):
+    # Events.objects.new(request.POST)
+=======
     if ['logged'].permission == 1:
         return render(request, 'be_everywhere_app/welcome_attendee.html')
     else
         return redirect ('/homepage')
+>>>>>>> b6c644b2d72204ff91b82c5eba202b1914d8c9ff
