@@ -63,8 +63,25 @@ def admin_manage_users(request):
 def admin_manage_products(request):
     return render(request, 'be_everywhere_app/admin_manage_products.html')
 
+def admin_manage_events(request):
+    if ['logged'].permission == 3: #assuming basic users are 1, admin are 3 and vendors 1?
+        context = {
+            'all_events': Events.objects.all()
+        }
+        return render(request, 'be_everywhere_app/welcome_admin.html')
+    else
+        return redirect ('/homepage')
+
 def admin_product_sales(request):
     return render(request, 'be_everywhere_app/admin_product_sales.html')
+
+def attendee_manage_events(request):
+    context = {
+        ['logged'].id: id,
+        'my_events': Events.objects.filter(=id),
+        'all_events': Events.objects.all()
+    }
+    return render(request, 'be_everywhere_app/attendee_manage_events.html', context)
 
 def attendees_become_an_operator(request):
     return render(request, 'be_everywhere_app/attendees_become_an_operator.html')
@@ -79,7 +96,13 @@ def view_user(request):
     return render(request, 'be_everywhere_app/view_user.html')
 
 def welcome_admin(request):
-    return render(request, 'be_everywhere_app/welcome_admin.html')
+    if ['logged'].permission == 3: #assuming basic users are 1, admin are 3 and vendors 1?
+        return render(request, 'be_everywhere_app/welcome_admin.html')
+    else
+        return redirect ('/homepage')
 
 def welcome_attendee(request):
-    return render(request, 'be_everywhere_app/welcome_attendee.html')
+    if ['logged'].permission == 1:
+        return render(request, 'be_everywhere_app/welcome_attendee.html')
+    else
+        return redirect ('/homepage')

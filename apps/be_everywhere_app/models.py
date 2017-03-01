@@ -58,6 +58,7 @@ class Events(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     event_creator = models.ForeignKey(Users, related_name="user_creator")
+    # event_attendee = models.ManyToManyField
     image = models.FileField(upload_to = "uploads/events")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
