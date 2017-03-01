@@ -8,7 +8,44 @@
 	</head>
 	<body>
 		<div class="wrapper">
-
+		{% if request.session.permission == 'Admin' %}
+			<table>
+				<tr>
+					<td><a href="/admin_manage_products">Back to Manage Products</a></td>
+				</tr>
+			</table>
+		{% endif %}
+	{% if product %}
+		{% for item in product %}
+			<h1>{{item.name}}</h1>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in product %}
+			<img src="{{item.image}}" alt="">
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.price}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.description}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.rate}} <form action="/shopping_cart_add/{{item.id}}" method="post"><input type="submit" value="Cart"></form>
+			</fieldset>
+		{% endfor %}
+	{% endif %}
 		</div>
 	</body>
 </html>

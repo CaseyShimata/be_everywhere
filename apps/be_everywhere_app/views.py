@@ -58,19 +58,28 @@ def admin_manage_users(request):
             ['logged'].id: id,
             'users': Users.objects.all()
         }
-        return render(request, "be_everywhere_app/admin_manage_users", context)
+        return render(request, "be_everywhere_app/admin_manage_users.html", context)
     else:
         redirect('be_everywhere_app/homepage.html')
 
-# def user_manage_events(request):
+# def attendee_manage_events(request):
 #     context = {
 #         ['logged'].id: id,
 #         'my_events': Events.objects.filter(event_order.user=id)
 #     }
-    return render(request, "be_everywhere_app/admin_manage_events", context)
+    return render(request, "be_everywhere_app/admin_manage_events.html", context)
 
-def user_manage_events(request):
-	return render(request, 'be_everywhere_app/admin_manage_users')
+
+
+
+
+# all bellow are page rendering methods
+
+def admin_manage_events(request):
+    return render(request, 'be_everywhere_app/admin_manage_events.html')
+
+def admin_manage_my_account(request):
+    return render(request, 'be_everywhere_app/admin_manage_my_account.html')
 
 def admin_manage_products(request):
     return render(request, 'be_everywhere_app/admin_manage_products.html')
@@ -78,14 +87,26 @@ def admin_manage_products(request):
 def admin_product_sales(request):
     return render(request, 'be_everywhere_app/admin_product_sales.html')
 
+def attendees_manage_my_account(request):
+    return render(request, 'be_everywhere_app/attendees_manage_my_account.html')
+
 def attendees_become_an_operator(request):
     return render(request, 'be_everywhere_app/attendees_become_an_operator.html')
+
+def attendees_manage_events(request):
+    return render(request, 'be_everywhere_app/attendees_manage_events.html')
 
 def my_messages(request):
     return render(request, 'be_everywhere_app/my_messages.html')
 
+def shopping_cart(request):
+    return render(request, 'be_everywhere_app/shopping_cart.html')
+
 def view_event(request):
     return render(request, 'be_everywhere_app/view_event.html')
+
+def view_product(request):
+    return render(request, 'be_everywhere_app/view_product.html')
 
 def view_user(request):
     return render(request, 'be_everywhere_app/view_user.html')

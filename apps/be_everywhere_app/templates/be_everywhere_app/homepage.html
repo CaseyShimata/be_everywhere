@@ -10,13 +10,18 @@
 		<div class="wrapper">
 			<h1>BE EVERYWHERE</h1> <img src="" alt="an image of the be everywhere logo">
 	    <a href="/log_reg">Login/Register</a>
-			<h3>About Be Everywhere</h3>
+			<h1>Login</h1>
+      <form action="/login" method="post">{% csrf_token %}
+        {{logform.as_p}}
+        <input type="submit" name="button">Login</input>
+      </form>
 			<fieldset>
+				<h3>About Be Everywhere</h3>
 				Be Everywhere is a multitasking app that gives you a virtual reality presence anywhere in the world at anytime.
 				<a href="/about">More About Us</a>
 			</fieldset>
 			<h3>Upcoming Events</h3>
-			<table>
+			<table id='bottom_table_header'>
 				<tr>
 					<td>Image</td>
 					<td>Name</td>
@@ -37,12 +42,11 @@
 						<td>event.name</td>
 						<td>event.location</td>
 						<td>event.genre</td>
-						{% comment %} ^^ please add genre to the table events {% endcomment %}
 						<td>event.start_date</td>
 						<td>event.end_date</td>
 						<td>event.description</td>
 						{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
-						<td><a href="">Attend</a></td>
+						<td><a href="/login_reg">Attend</a></td>
 						{% comment %} ^^ links to the login/register page with a message
 						'So, ya wanna attend the event do ya? Why don't you fill our your info and click that nice signup button right there?'
 						 {% endcomment %}

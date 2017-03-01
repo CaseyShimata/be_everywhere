@@ -1,0 +1,64 @@
+*{
+	margin: 2px;
+	padding: 2px;
+	text-align: center;
+	outline: dotted 1px red;
+	max-width: 600px;
+	background-color: rgb(222, 85, 35);
+}
+div{
+
+}
+h1{
+	font-size: 40px;
+	color: grey;
+	font-family: "Verdana", monospace;
+}
+h3{
+	font-size: 30px;
+	color: gold;
+	font-family: "Verdana", monospace;
+}
+fieldset{
+	font-size: 20px;
+	color: white;
+}
+p{
+	color: white;
+	font-size: 20px;
+}
+.wrapper{
+	max-width: 600px;
+}
+a{
+	color: rgb(145, 195, 128);
+	font-size: 20px;
+}
+table{
+
+}
+tr{
+
+}
+td{
+	font-size: 50px;
+}
+form{
+
+}
+input [type='select']{
+
+}
+input [type='text']{
+
+}
+
+select{
+
+}
+option{
+
+}
+img{
+
+}

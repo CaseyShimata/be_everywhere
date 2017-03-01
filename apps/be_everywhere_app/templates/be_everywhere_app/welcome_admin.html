@@ -15,7 +15,7 @@
 			<img src="{% static 'be_everywhere_app/images/#.jpg' %}" alt="your profile picture">
 			<table>
 				<tr>
-					<td><a href="/messages">My Mesages</a></td>
+					<td><a href="/my_messages">My Mesages</a></td>
 					<td><a href="/admin_manage_my_account">Manage My Account</a></td>
 					<td><a href="/admin_manage_events">Manage Events</a></td>
 					<td><a href="/admin_manage_products">Manage Products</a></td>
@@ -23,9 +23,41 @@
 					<td><a href="/admin_manage_users">Manage Users</a></td>
 				</tr>
 			</table>
-
-
-
+			<h1>Newest Operators</h1>
+	{% if operators %}
+		{% for operator in operators %}
+			<fieldset>
+				<table>
+					<tr>
+						<td><img src="{{item.image}}" alt=""></td>
+						<td>{{operator.name}}</td>
+						<td>{{operator.product}}</td>
+						<td>{{operator.location}}</td>
+						<td>{{opertor.event_sum}}</td>
+						{% comment %} returns a count for the number of event instances with foreign id linked to operator  {% endcomment %}
+					</tr>
+				</table>
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+			<h1>Newest Events</h1>
+	{% if events %}
+		{% for item in events %}
+			<fieldset>
+				<table>
+					<tr>
+						<td><img src="{{item.image}}" alt=""></td>
+						<td>{{item.name}}</td>
+						<td>{{item.location}}</td>
+						<td>{{item.genre}}</td>
+						<td>{{item.start_date}}</td>
+						<td>{{item.end_date}}</td>
+						<td>{{item.description}}</td>
+					</tr>
+				</table>
+			</fieldset>
+		{% endfor %}
+	{% endif %}
 		</div>
 	</body>
 </html>

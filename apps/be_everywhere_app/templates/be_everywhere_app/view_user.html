@@ -8,7 +8,44 @@
 	</head>
 	<body>
 		<div class="wrapper">
-
+		{% if request.session.permission == 'Admin' %}
+			<table>
+				<tr>
+					<td><a href="/admin_manage_users">Back to Manage Users</a></td>
+				</tr>
+			</table>
+		{% endif %}
+		{% if request.session.permission == 'Attendee' or request.session.permission == 'Operator' %}
+			<table>
+				<tr>
+					<td><a href="/view_user">Back to View Users</a></td>
+				</tr>
+			</table>
+		{% endif %}
+	{% if user %}
+		{% for item in user %}
+			<h1>{{item.first}} + ' ' + {{item.last}}</h1>
+		{% endfor %}
+	{% endif %}
+	{% if user %}
+		{% for item in user %}
+			<img src="{{item.image}}" alt="">
+		{% endfor %}
+	{% endif %}
+	{% if user %}
+		{% for item in user %}
+			<fieldset>
+				{{item.email}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if user %}
+		{% for item in user %}
+			<fieldset>
+				{{item.permission}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
 		</div>
 	</body>
 </html>

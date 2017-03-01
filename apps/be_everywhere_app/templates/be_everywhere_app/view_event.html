@@ -8,7 +8,72 @@
 	</head>
 	<body>
 		<div class="wrapper">
-
+		{% if request.session.permission == 'Attendee' %}
+			<table>
+				<tr>
+					<td><a href="/attendees_manage_events">Back to Manage Events</a></td>
+				</tr>
+			</table>
+		{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<h1>{{item.name}}</h1>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<img src="{{item.image}}" alt="">
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.genre}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.location}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.start_date}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.end_date}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.description}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.rate}}
+			</fieldset>
+		{% endfor %}
+	{% endif %}
+	{% if event %}
+		{% for item in event %}
+			<fieldset>
+				{{item.rate}} <form action="/shopping_cart_add/{{item.id}}" method="post"><input type="submit" value="Cart"></form>
+			</fieldset>
+		{% endfor %}
+	{% endif %}
 		</div>
 	</body>
 </html>

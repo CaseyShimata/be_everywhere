@@ -3,9 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>About Us</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/about.css' %}" />
   </head>
   <body>
-    <a href="/">Home</a>
-    <h1>Who we are</h1>
-  </body>
+		<div class="wrapper">
+	    <a href="/">Home</a>
+	    <h1>Who we are</h1>
+			<fieldset>
+			 <p>-Put on your virtual reality headset and suddenly you are logged into
+					a serrogate all the way accross the globe.</p>
+
+				<p>-You can Walk around and interact with others. Make purchases, view the
+				 world as if you were standing right there!</p>
+
+				<p>-With 360 degree view, haptic feed back and a headsup display you get to feel and
+				 experience being anywhere and everywhere in the world in a manner of seconds!</p>
+
+				<p>Sign up and start being everywhere!!</p>
+			</fieldset>
+		</div>
+	</body>
 </html>

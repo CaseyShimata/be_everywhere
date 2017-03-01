@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>shopping_cart</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/shopping_cart.css' %}" />
+	</head>
+	<body>
+		<div class="wrapper">
+		{% if request.session.permission == 'Attendee' %}
+			<table>
+				<tr>
+					<td><a href="/attendees_manage_events">Back to Manage Events</a></td>
+				</tr>
+			</table>
+		{% endif %}
+			<h1>Shopping Cart</h1>
+			<h3>My Cart</h3>
+			<table>
+				<tr>
+					<td>Image</td>
+					<td>Name</td>
+					<td>Location</td>
+					<td>Genre</td>
+					<td>Start Date</td>
+					<td>End Date</td>
+					<td>Description</td>
+					<td>Rate per Minute</td>
+					<td>         </td>
+				</tr>
+			</table>
+			<fieldset>
+				<table>
+			{% if events %}
+			{% for event in events %}
+					<tr>
+						<td>event.image</td>
+						<td>event.name</td>
+						<td>event.location</td>
+						<td>event.genre</td>
+						<td>event.start_date</td>
+						<td>event.end_date</td>
+						<td>event.description</td>
+						{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
+						<td>event.rate</td>
+						<td><a href="/remove">Remove</a></td>
+					</tr>
+			{% endfor %}
+			{% endif %}
+				</table>
+			</fieldset>
+			{% comment %} need to sum ^^^ var total_cost = 0; for event in events{ total_cost = sum +(event.end_date - event.start_date * event.rate)  {% endcomment %}
+			<form action="/stripe{{total_cost}}" method="post">
+				<input type="submit" value="Finalize Purchase">
+			</form>
+		</div>
+	</body>
+</html>

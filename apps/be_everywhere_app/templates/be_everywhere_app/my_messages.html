@@ -10,12 +10,13 @@
 		<div class="wrapper">
 	{% if messages %}
     {% for message in messages %}
-      <p>{{message}}</p>
+			<p class="{{message.tags}}">{{message}}</p>
     {% endfor %}
   {% endif %}
 			<a href="http://localhost:8000/log_out">Logout</a>
-			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
+			<form action="/change_tier" method="post"><select name="Admin">Admin</select><select name="Operator">Operator</select><select name="Attendee">Attendee</select><input type="submit" value="Change Tier"></form>
 			<h1>My Messages</h1>
+		{% if request.session.permission == 'Admin' %}
 			<table>
 				<tr>
 					<td><a href="/admin_product_sales">Product Sales</a></td>
@@ -26,9 +27,20 @@
 					<td><a href="/admin_manage_users">Manage Products</a></td>
 				</tr>
 			</table>
+		{% endif %}
+		{% if request.session.permission == 'Attendee' %}
+			<table>
+				<tr>
+					<td><a href="/welcome_attendee">My page</a></td>
+					<td><a href="/become_an_operator">Become an Operator</a></td>
+					<td><a href="/attendee_manage_events">Manage Events</a></td>
+					<td><a href="/attendee_manage_account">Manage Account</a></td>
+				</tr>
+			</table>
+		{% endif %}
 			<h3>Compose a Message</h3>
 			<form action="/send_message" method="post">{% csrf_token %}
-				{{regform.as_p}}
+				{{messageform.as_table}}
 				<input type="submit" value="send">
 			</form>
 			<h3>Inbox</h3>
@@ -41,12 +53,12 @@
 			</table>
 			<fieldset>
 				<table>
-			{% if messages %}
-			{% for message in messages %}
+			{% if my_messages %}
+			{% for user_and_message in my_messages %}
 					<tr>
-						<td>user.first</td>
-						<td>user.message</td>
-						<td><a href="/">View User</a></td>
+						<td>user_and_message.first</td>
+						<td>user_and_message.message</td>
+						<td><a href="/view_user/{{user_and_message.id}}">View User</a></td>
 					</tr>
 			{% endfor %}
 			{% endif %}

@@ -15,12 +15,31 @@
 			<img src="{% static 'be_everywhere_app/images/#.jpg' %}" alt="your profile picture">
 			<table>
 				<tr>
-					<td><a href="/messages">My Mesages</a></td>
-					<td><a href="/become_an_operator">Become an Operator</a></td>
-					<td><a href="/attendee_manage_events">Manage Events</a></td>
-					<td><a href="/attendee_manage_account">Manage Account</a></td>
+					<td><a href="/my_messages">My Mesages</a></td>
+					<td><a href="/attendees_become_an_operator">Become an Operator</a></td>
+					<td><a href="/attendees_manage_events">Manage Events</a></td>
+					<td><a href="/attendees_manage_my_account">Manage Account</a></td>
 				</tr>
 			</table>
+			<h1>My Upcoming Events</h1>
+			{% comment %} make sure this only queries up to the 3 most recent event id's for the user {% endcomment %}
+	{% if events %}
+		{% for item in events %}
+			<fieldset>
+				<table>
+					<tr>
+						<td><img src="{{item.image}}" alt=""></td>
+						<td>{{item.name}}</td>
+						<td>{{item.location}}</td>
+						<td>{{item.genre}}</td>
+						<td>{{item.start_date}}</td>
+						<td>{{item.end_date}}</td>
+						<td>{{item.description}}</td>
+					</tr>
+				</table>
+			</fieldset>
+		{% endfor %}
+		{% endif %}
 		</div>
 	</body>
 </html>
