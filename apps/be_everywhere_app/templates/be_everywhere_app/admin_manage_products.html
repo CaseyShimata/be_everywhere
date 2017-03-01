@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>admin_manage_products</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/admin_manage_products.css' %}" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<a href="http://localhost:8000/log_out">Logout</a>
+			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
+			<h1>Manage Products</h1>
+			<table>
+				<tr>
+					<td><a href="/messages">My Messages</a></td>
+					<td><a href="/admin_manage_my_account">Manage My Account</a></td>
+					<td><a href="/welcome_admin">My Page</a></td>
+					<td><a href="/admin_manage_Events">Manage Events</a></td>
+					<td><a href="/admin_product_sales">Manage Product Sales</a></td>
+					<td><a href="/admin_manage_users">Manage Users</a></td>
+				</tr>
+			</table>
+			<h3>Current Products</h3>
+			<table>
+				<tr>
+					<td>Image</td>
+					<td>Name</td>
+					<td>Price</td>
+					<td>Description</td>
+					<td>         </td>
+					<td>         </td>
+					<td>         </td>
+				</tr>
+			</table>
+				<fieldset>
+					<table>
+			{% if products %}
+				{% for product in products %}
+						<tr>
+							<td>product.image</td>
+							<td>product.name</td>
+							<td>product.price</td>
+							<td>product.description</td>
+							{% comment %} ^^needs to become a hover over item that dislays the database description {% endcomment %}
+							<td><a href="/">View</a></td>
+							{% comment %} see who is attending the event and who created the event {% endcomment %}
+							<td><a href="/">Edit</a></td>
+							<td><a href="/">Delete</a></td>
+						</tr>
+				{% endfor %}
+			{% endif %}
+					</table>
+				</fieldset>
+				<form action="/add_product" method="post">{% csrf_token %}
+					{{regform.as_p}}
+					<input type="submit" value="Add">
+				</form>
+			</div>
+	</body>
+</html>

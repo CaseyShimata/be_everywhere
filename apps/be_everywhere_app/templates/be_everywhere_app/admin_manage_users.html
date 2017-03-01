@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>admin_manage</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'be_everywhere_app/css/homepage.css' %}" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<a href="http://localhost:8000/log_out">Logout</a>
+			<a href="http://localhost:8000/change_tier">Change Account Tier</a>
+			<h1>Manage Users</h1>
+			<table>
+				<tr>
+					<td><a href="/messages">My Messages</a></td>
+					<td><a href="/admin_manage_my_account">Manage My Account</a></td>
+					<td><a href="/welcome_admin">My Page</a></td>
+					<td><a href="/admin_manage_Events">Manage Events</a></td>
+					<td><a href="/admin_product_sales">Manage Product Sales</a></td>
+					<td><a href="/admin_manage_users">Manage Products</a></td>
+				</tr>
+			</table>
+			<h3>Users</h3>
+			<table>
+				<tr>
+					<td>Image</td>
+					<td>Username</td>
+					<td>email</td>
+					<td>status</td>
+					<td>request</td>
+					<td>         </td>
+					<td>         </td>
+					<td>         </td>
+				</tr>
+			</table>
+			<fieldset>
+				<table>
+			{% if users %}
+				{% for user in users %}
+					<tr>
+						<td>user.image</td>
+						<td>user.username</td>
+						<td>user.email</td>
+						<td><form action="/change_tier" method="post"> <select><option value="Administrator">Administrator</option><option value="Operator">Operator</option><option value="Attendee">Attendee</option></select> <input type="select" name="change_tier" value="Change Tier"> </form></td>
+						<td>{{user.admin_request}}</td>
+						<td><a href="/">View</a></td>
+						<td><a href="/">Delete</a></td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+				</table>
+			</fieldset>
+		</div>
+	</body>
+</html>
